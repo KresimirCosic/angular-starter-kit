@@ -30,7 +30,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "bundleName": "normalize.css",
+                "input": "./node_modules/normalize.css/normalize.css",
+                "inject": true
+              }
             ],
             "scripts": []
           },
