@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: 'feature',
     loadChildren: () =>
-      import('@app/modules/feature/feature.module').then(
-        (module) => module.FeatureModule
+      import('@app/modules/todos/todos.module').then(
+        (module) => module.TodosModule
       ),
   },
 ];
