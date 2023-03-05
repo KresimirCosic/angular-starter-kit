@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { CoreRoutingModule } from '@app/modules/core/core-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/modules/shared/shared.module';
 
 @NgModule({
   declarations: [],

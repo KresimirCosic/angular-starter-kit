@@ -14,8 +14,12 @@ import { AppComponent } from '@app/app.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    StoreModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+    }),
   ],
   bootstrap: [AppComponent],
 })

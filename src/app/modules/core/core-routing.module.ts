@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'feature',
+    path: 'todos',
     loadChildren: () =>
       import('@app/modules/todos/todos.module').then(
         (module) => module.TodosModule
