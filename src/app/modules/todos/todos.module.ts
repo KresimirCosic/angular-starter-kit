@@ -7,6 +7,8 @@ import { SharedModule } from '@app/modules/shared/shared.module';
 import { TodosPageComponent } from '@app/modules/todos/pages/todos-page/todos-page.component';
 
 import { todosReducer } from '@app/modules/todos/store/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { TodosEffects } from '@app/modules/todos/store/effects';
 
 @NgModule({
   declarations: [TodosPageComponent],
@@ -14,6 +16,7 @@ import { todosReducer } from '@app/modules/todos/store/reducer';
     TodosRoutingModule,
     SharedModule,
     StoreModule.forFeature('todos', todosReducer),
+    EffectsModule.forFeature([TodosEffects]),
   ],
 })
 export class TodosModule {}

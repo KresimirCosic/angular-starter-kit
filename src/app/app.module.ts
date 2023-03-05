@@ -7,6 +7,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { SharedModule } from '@app/modules/shared/shared.module';
 
 import { AppComponent } from '@app/app.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AppComponent } from '@app/app.component';
     AppRoutingModule,
     SharedModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
