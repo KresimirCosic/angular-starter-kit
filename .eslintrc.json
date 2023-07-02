@@ -1,15 +1,27 @@
 {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
   "overrides": [
     {
+      "parserOptions": {
+        "project": ["tsconfig.(app|spec).json"],
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
       "files": ["*.ts"],
       "extends": [
+        "standard-with-typescript",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
+
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -26,9 +38,11 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-explicit-any": "off"
       }
     },
+    // NOTE: we are not applying prettier in this override, only @angular-eslint/template
     {
       "files": ["*.html"],
       "extends": [
@@ -36,72 +50,16 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    // NOTE: we are not applying @angular-eslint/template in this overrride, only prettier
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        // NOTE: we are overriding the defualt config to always set the parser to angular (see bellow)
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
     }
   ]
 }
-
-// {
-//     "root": true,
-//     "ignorePatterns": ["projects/**/*"],
-//     "env": {
-//       "browser": true,
-//       "es2021": true
-//     },
-//     "extends": [
-//       "standard-with-typescript",
-//       "eslint:recommended",
-//       "plugin:@typescript-eslint/recommended"
-//     ],
-//     "parserOptions": {
-//       "ecmaVersion": "latest",
-//       "sourceType": "module"
-//     },
-//     "rules": {},
-//     "overrides": [
-//       {
-//         "files": ["*.ts"],
-//         "extends": [
-//           "eslint:recommended",
-//           "plugin:@typescript-eslint/recommended",
-//           "plugin:@angular-eslint/recommended",
-//           "plugin:@angular-eslint/template/process-inline-templates",
-//           "plugin:prettier/recommended"
-//         ],
-//         "rules": {
-//           "@angular-eslint/diective-selector": [
-//             "error",
-//             {
-//               "type": "attribute",
-//               "prefix": "app",
-//               "style": "camelCase"
-//             }
-//           ],
-//           "@angular-eslint/component-selector": [
-//             "error",
-//             {
-//               "type": "element",
-//               "prefix": "app",
-//               "style": "kebab-case"
-//             }
-//           ],
-//           "@typescript-eslint/no-explicit-any": "off"
-//         }
-//       },
-//       // NOTE: we are not applying prettier in this override, only @angular-eslint/template
-//       {
-//         "files": ["*.html"],
-//         "extends": ["plugin:@angular-eslint/template/recommended"],
-//         "rules": {}
-//       },
-//       // NOTE: we are not applying @angular-eslint/template in this overrride, only prettier
-//       {
-//         "files": ["*.html"],
-//         "excludedFiles": ["*inline-template-*.component.html"],
-//         "extends": ["plugin:prettier/recommended"],
-//         "rules": {
-//           // NOTE: we are overriding the defualt config to always set the parser to angular (see bellow)
-//           "prettier/prettier": ["error", { "parser": "angular" }]
-//         }
-//       }
-//     ]
-//   }
