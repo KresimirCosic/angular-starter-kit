@@ -1,0 +1,15 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/build
+**/coverage
+**/dist
+**/.angular
+**/pnpm-lock.yaml
+**/package.json
+**/angular.json
+**/.eslintrc.json
+**/.prettierrc
+**/.vscode
+**/README.md
